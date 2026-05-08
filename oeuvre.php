@@ -16,7 +16,14 @@
         <article id="detail-oeuvre">
             <?php
             include 'oeuvres.php';
-            foreach ($oeuvre as $tableau) : ?>
+            if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            foreach ($oeuvre as $tableau) {
+                if ($tableau['id'] == $id) {
+                    break;
+                }
+            } ?>
             <div id="img-oeuvre">
                 <img src="<?php echo $tableau['image']; ?>" alt="<?php echo $tableau['titre']; ?>">
             </div>
@@ -25,7 +32,7 @@
                 <p class="description"><?php echo $tableau['description']; ?></p>
                 <p class="description-complete"><?php echo $tableau['description-complete']; ?></p>
             </div>
-            <?php endforeach; ?>
+            <?php } ?>
         </article>
     </main>
 
